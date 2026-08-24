@@ -171,7 +171,7 @@ end,
 )
 create_bind(vars.kbPinWindow, hl.dsp.window.pin(), "Window Actions: Pin the active window")
 create_bind(vars.kbWindowFullscreen, hl.dsp.window.fullscreen({ mode = "fullscreen" }), "Window Actions: Toggle fullscreen mode")
-create_bind(vars.kbWindowBorderedFullscreen, hl.dsp.window.fullscreen({ mode = "maximized" }), "Window Actions: Toggle maximized mode")
+create_bind(vars.kbWindowBorderedFullscreen, hl.dsp.window.fullscreen({ mode = "maximized" }), "Window Actions: Toggle bordered fullscreen mode")
 create_bind(vars.kbToggleWindowFloating, hl.dsp.window.float(), "Window Actions: Toggle floating mode")
 create_bind(vars.kbCloseWindow, hl.dsp.window.close(), "Window Actions: Close the active window")
 
