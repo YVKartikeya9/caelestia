@@ -203,10 +203,10 @@ create_bind("XF86MonBrightnessUp", hl.dsp.global("caelestia:brightnessUp"), lock
 create_bind("XF86MonBrightnessDown", hl.dsp.global("caelestia:brightnessDown"), locked, "Brightness: Decrease screen brightness")
 
 -- Media
-create_bind({ vars.kbMediaToggle, "XF86AudioPlay", "XF86AudioPause" }, hl.dsp.global("caelestia:mediaToggle"), locked, "Media: Play or pause media")
-create_bind({ vars.kbMediaNext, "XF86AudioNext" }, hl.dsp.global("caelestia:mediaNext"), locked, "Media: Skip to the next track")
-create_bind({ vars.kbMediaPrev, "XF86AudioPrev" }, hl.dsp.global("caelestia:mediaPrev"), locked, "Media: Go to the previous track")
-create_bind({ vars.kbMediaStop, "XF86AudioStop" }, hl.dsp.global("caelestia:mediaStop"), locked, "Media: Stop media playback")
+create_bind({ vars.kbMediaToggle, "XF86AudioPlay", "XF86AudioPause" }, hl.dsp.global("caelestia:mediaToggle"), "Media: Toggle playback", locked)
+create_bind({ vars.kbMediaNext, "XF86AudioNext" }, hl.dsp.global("caelestia:mediaNext"), "Media: Skip to the next track", locked)
+create_bind({ vars.kbMediaPrev, "XF86AudioPrev" }, hl.dsp.global("caelestia:mediaPrev"), "Media: Go to the previous track", locked)
+create_bind({ vars.kbMediaStop, "XF86AudioStop" }, hl.dsp.global("caelestia:mediaStop"), "Media: Stop playback", locked)
 
 -- Volume
 create_bind({ vars.kbVolumeMute, "XF86AudioMute" }, hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), locked, "Volume: Toggle system audio mute")
