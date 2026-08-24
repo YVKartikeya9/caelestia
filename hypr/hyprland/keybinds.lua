@@ -185,7 +185,7 @@ create_bind(vars.kbTodoWs, fn.toggle("todo"), "Special Workspaces: Toggle the to
 -- Apps
 create_bind(vars.kbTerminal, hl.dsp.exec_cmd(vars.terminal), "Apps: Open the terminal")
 create_bind(vars.kbBrowser, hl.dsp.exec_cmd(vars.browser), "Apps: Open the web browser")
-create_bind(vars.kbEditor, hl.dsp.exec_cmd(vars.editor), "Apps: Open the code editor")
+create_bind(vars.kbEditor, hl.dsp.exec_cmd(vars.editor), "Apps: Open the editor")
 create_bind(vars.kbFileExplorer, hl.dsp.exec_cmd(vars.fileExplorer), "Apps: Open the file explorer")
 create_bind(vars.kbAudioSettings, hl.dsp.exec_cmd(vars.audioSettings), "Apps: Open the audio settings")
 
