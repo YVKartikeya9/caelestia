@@ -254,8 +254,7 @@ create_bind(
 )
 
 create_bind(
-    "SUPER + Slash",
+    vars.kbCheatsheet,
     hl.dsp.global("caelestia:cheatsheet"),
-    nil,
-    "Launcher: Open the keybind cheatsheet"
+    "Shell: Open the keybind cheatsheet"
 )
