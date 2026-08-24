@@ -79,10 +79,10 @@ create_bind(
 )
 
 -- Misc
-create_bind(vars.kbSession, hl.dsp.global("caelestia:session"), "Misc: Open the session controls")
-create_bind(vars.kbShowSidebar, hl.dsp.global("caelestia:sidebar"), "Misc: Show the sidebar")
-create_bind(vars.kbClearNotifs, hl.dsp.global("caelestia:clearNotifs"), locked, "Misc: Clear all notifications")
-create_bind(vars.kbShowPanels, hl.dsp.global("caelestia:showall"), "Misc: Show all panels")
+create_bind(vars.kbSession, hl.dsp.global("caelestia:session"), "Shell: Open the session controls")
+create_bind(vars.kbShowSidebar, hl.dsp.global("caelestia:sidebar"), "Shell: Show the sidebar")
+create_bind(vars.kbClearNotifs, hl.dsp.global("caelestia:clearNotifs"), "Shell: Clear all notifications", locked)
+create_bind(vars.kbShowPanels, hl.dsp.global("caelestia:showall"), "Shell: Show all panels")
 create_bind(vars.kbLock, hl.dsp.global("caelestia:lock"), "Misc: Lock the session")
 
 -- Restore lock
