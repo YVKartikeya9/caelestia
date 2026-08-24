@@ -230,7 +230,7 @@ create_bind(
 )
 
 -- Sleep
-create_bind(vars.kbSleep, hl.dsp.exec_cmd(vars.sleepGestureCmd), locked, "Sleep: Suspend and hibernate the system")
+create_bind(vars.kbSleep, hl.dsp.exec_cmd(vars.sleepGestureCmd), "Misc: Run the sleep command", locked)
 
 -- Clipboard and emoji picker
 create_bind(vars.kbClipboard, hl.dsp.exec_cmd("pkill fuzzel || caelestia clipboard"), "Clipboard: Open clipboard history")
