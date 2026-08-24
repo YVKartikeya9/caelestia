@@ -94,7 +94,7 @@ end,
 )
 
 -- Kill/restart
-create_bind("CTRL + SUPER + SHIFT + R", hl.dsp.exec_cmd("qs -c caelestia kill"), release, "System: Restart the Caelestia shell")
+create_bind("CTRL + SUPER + SHIFT + R", hl.dsp.exec_cmd("qs -c caelestia kill"), "Shell: Kill the running shell", release)
 create_bind(
     "CTRL + SUPER + ALT + R",
     hl.dsp.exec_cmd("qs -c caelestia kill; sleep .1; caelestia shell -d"),
