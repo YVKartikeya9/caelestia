@@ -104,10 +104,10 @@ create_bind(
 
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
-    create_bind(extend_keybind(vars.kbGoToWs, key), fn.wsaction("focus", "", i), "Workspace: Go to the selected workspace")
-    create_bind(extend_keybind(vars.kbMoveWinToWs, key), fn.wsaction("move", "", i), "Workspace: Move the active window to the selected workspace")
-    create_bind(extend_keybind(vars.kbGoToWsGroup, key), fn.wsaction("focus", "group", i), "Workspace: Go to the selected workspace group")
-    create_bind(extend_keybind(vars.kbMoveWinToWsGroup, key), fn.wsaction("move", "group", i), "Workspace: Move the active window to the selected workspace group")
+    create_bind(extend_keybind(vars.kbGoToWs, key), fn.wsaction("focus", "", i), "Workspaces: Go to workspace " .. i)
+    create_bind(extend_keybind(vars.kbMoveWinToWs, key), fn.wsaction("move", "", i), "Workspaces: Move the window to workspace " .. i)
+    create_bind(extend_keybind(vars.kbGoToWsGroup, key), fn.wsaction("focus", "group", i), "Workspaces: Go to workspace group " .. i)
+    create_bind(extend_keybind(vars.kbMoveWinToWsGroup, key), fn.wsaction("move", "group", i), "Workspaces: Move the window to workspace group " .. i)
 end
 
 -- Go to workspace -1/+1
