@@ -190,12 +190,12 @@ create_bind(vars.kbFileExplorer, hl.dsp.exec_cmd(vars.fileExplorer), "Apps: Open
 create_bind(vars.kbAudioSettings, hl.dsp.exec_cmd(vars.audioSettings), "Apps: Open the audio settings")
 
 -- Utilities
-create_bind(vars.kbScreenshot, hl.dsp.exec_cmd("caelestia screenshot"), locked, "Utilities: Take a screenshot")
+create_bind(vars.kbScreenshot, hl.dsp.exec_cmd("caelestia screenshot"), "Utilities: Capture a screenshot", locked)
 create_bind(vars.kbScreenshotFreeze, hl.dsp.global("caelestia:screenshotFreeze"), "Utilities: Freeze the screen and capture a screenshot")
-create_bind(vars.kbScreenshotRegion, hl.dsp.global("caelestia:screenshot"), "Utilities: Capture a selected screen region")
-create_bind(vars.kbRecord, hl.dsp.exec_cmd("caelestia record"), "Utilities: Start screen recording")
-create_bind(vars.kbRecordSound, hl.dsp.exec_cmd("caelestia record -s"), "Utilities: Start screen recording with audio")
-create_bind(vars.kbRecordRegion, hl.dsp.exec_cmd("caelestia record -r"), "Utilities: Start recording a selected screen region")
+create_bind(vars.kbScreenshotRegion, hl.dsp.global("caelestia:screenshot"), "Utilities: Capture a screenshot of a selected region")
+create_bind(vars.kbRecord, hl.dsp.exec_cmd("caelestia record"), "Utilities: Start a screen recording")
+create_bind(vars.kbRecordSound, hl.dsp.exec_cmd("caelestia record -s"), "Utilities: Start a screen recording with audio")
+create_bind(vars.kbRecordRegion, hl.dsp.exec_cmd("caelestia record -r"), "Utilities: Start a screen recording of a selected region")
 create_bind(vars.kbColorPicker, hl.dsp.exec_cmd("hyprpicker -a"), "Utilities: Pick a color from the screen")
 
 -- Brightness
