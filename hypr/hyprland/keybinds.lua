@@ -235,7 +235,7 @@ create_bind(vars.kbSleep, hl.dsp.exec_cmd(vars.sleepGestureCmd), "Misc: Run the 
 -- Clipboard and emoji picker
 create_bind(vars.kbClipboard, hl.dsp.exec_cmd("pkill fuzzel || caelestia clipboard"), "Clipboard: Open clipboard history")
 create_bind(vars.kbClipboardDel, hl.dsp.exec_cmd("pkill fuzzel || caelestia clipboard -d"), "Clipboard: Delete an item from clipboard history")
-create_bind(vars.kbEmoji, hl.dsp.exec_cmd("pkill fuzzel || caelestia emoji -p"), "Clipboard: Open the emoji picker")
+create_bind(vars.kbEmoji, hl.dsp.exec_cmd("pkill fuzzel || caelestia emoji -p"), "Utilities: Open the emoji picker")
 create_bind(
     vars.kbClipboardPasteLatest,
     hl.dsp.exec_cmd('sleep 0.5s && ydotool type -d 1 "$(cliphist list | head -1 | cliphist decode)"'),
