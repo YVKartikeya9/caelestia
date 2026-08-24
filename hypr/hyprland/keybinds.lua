@@ -99,7 +99,7 @@ create_bind(
     "CTRL + SUPER + ALT + R",
     hl.dsp.exec_cmd("qs -c caelestia kill; sleep .1; caelestia shell -d"),
     release,
-    "System: Restart the Caelestia shell and reload it cleanly"
+    "Shell: Restart the shell"
 )
 
 for i = 1, 10 do
