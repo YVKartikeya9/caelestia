@@ -35,13 +35,7 @@ local function flatten_keybinds(keybinds, keys)
     return keys
 end
 
-local function create_bind(keybinds, action, flags, description)
-    -- Shorthand: create_bind(keys, action, "description") with no special flags
-    if type(flags) == "string" and description == nil then
-        description = flags
-        flags = nil
-    end
-
+local function create_bind(keybinds, action, description, flags)
     local get_flags = type(flags) == "function" and flags or function()
         return flags
     end
@@ -72,10 +66,10 @@ local launcher_default = normalise_keybind("SUPER + SUPER_L")
 create_bind(
     vars.kbLauncher,
     hl.dsp.global("caelestia:launcher"),
+    "Shell: Open the launcher",
     function(key)
         return normalise_keybind(key) == launcher_default and release or nil
-    end,
-    "Shell: Open the launcher"
+    end
 )
 
 -- Misc
@@ -98,8 +92,8 @@ create_bind("CTRL + SUPER + SHIFT + R", hl.dsp.exec_cmd("qs -c caelestia kill"),
 create_bind(
     "CTRL + SUPER + ALT + R",
     hl.dsp.exec_cmd("qs -c caelestia kill; sleep .1; caelestia shell -d"),
-    release,
-    "Shell: Restart the shell"
+    "Shell: Restart the shell",
+    release
 )
 
 for i = 1, 10 do
@@ -111,26 +105,26 @@ for i = 1, 10 do
 end
 
 -- Go to workspace -1/+1
-create_bind(vars.kbPrevWs, hl.dsp.focus({ workspace = "-1" }), repeating_unless_mouse, "Workspace: Go to the previous workspace")
-create_bind(vars.kbNextWs, hl.dsp.focus({ workspace = "+1" }), repeating_unless_mouse, "Workspace: Go to the next workspace")
+create_bind(vars.kbPrevWs, hl.dsp.focus({ workspace = "-1" }), "Workspace: Go to the previous workspace", repeating_unless_mouse)
+create_bind(vars.kbNextWs, hl.dsp.focus({ workspace = "+1" }), "Workspace: Go to the next workspace", repeating_unless_mouse)
 
 -- Go to workspace group -1/+1
-create_bind(vars.kbPrevWsGroup, hl.dsp.focus({ workspace = "-10" }), repeating_unless_mouse, "Workspace: Go to the previous workspace group")
-create_bind(vars.kbNextWsGroup, hl.dsp.focus({ workspace = "+10" }), repeating_unless_mouse, "Workspace: Go to the next workspace group")
+create_bind(vars.kbPrevWsGroup, hl.dsp.focus({ workspace = "-10" }), "Workspace: Go to the previous workspace group", repeating_unless_mouse)
+create_bind(vars.kbNextWsGroup, hl.dsp.focus({ workspace = "+10" }), "Workspace: Go to the next workspace group", repeating_unless_mouse)
 
 -- Move window to workspace -1/+1
-create_bind(vars.kbMoveWinToWsNext, hl.dsp.window.move({ workspace = "+1" }), repeating_unless_mouse, "Workspace: Move the active window to the next workspace")
-create_bind(vars.kbMoveWinToWsPrev, hl.dsp.window.move({ workspace = "-1" }), repeating_unless_mouse, "Workspace: Move the active window to the previous workspace")
+create_bind(vars.kbMoveWinToWsNext, hl.dsp.window.move({ workspace = "+1" }), "Workspace: Move the active window to the next workspace", repeating_unless_mouse)
+create_bind(vars.kbMoveWinToWsPrev, hl.dsp.window.move({ workspace = "-1" }), "Workspace: Move the active window to the previous workspace", repeating_unless_mouse)
 
 -- Move window to/from special workspace
 create_bind(vars.kbMoveWinToWsSpecial, hl.dsp.window.move({ workspace = "special:special" }), "Workspace: Move the active window to the special workspace")
 create_bind(vars.kbMoveWinFromWsSpecial, hl.dsp.window.move({ workspace = "e+0" }), "Workspace: Move the active window out of the special workspace")
 
 -- Window groups
-create_bind(vars.kbWindowCycleNext, hl.dsp.window.cycle_next(), repeating, "Window Groups: Cycle to the next window")
-create_bind(vars.kbWindowCyclePrev, hl.dsp.window.cycle_next({ next = false }), repeating, "Window Groups: Cycle to the previous window")
-create_bind(vars.kbWindowGroupCycleNext, hl.dsp.group.next(), repeating, "Window Groups: Cycle to the next window group")
-create_bind(vars.kbWindowGroupCyclePrev, hl.dsp.group.prev(), repeating, "Window Groups: Cycle to the previous window group")
+create_bind(vars.kbWindowCycleNext, hl.dsp.window.cycle_next(), "Window Groups: Cycle to the next window", repeating)
+create_bind(vars.kbWindowCyclePrev, hl.dsp.window.cycle_next({ next = false }), "Window Groups: Cycle to the previous window", repeating)
+create_bind(vars.kbWindowGroupCycleNext, hl.dsp.group.next(), "Window Groups: Cycle to the next window group", repeating)
+create_bind(vars.kbWindowGroupCyclePrev, hl.dsp.group.prev(), "Window Groups: Cycle to the previous window group", repeating)
 create_bind(vars.kbToggleGroup, hl.dsp.group.toggle(), "Window Groups: Toggle the active window group")
 create_bind(vars.kbUngroup, hl.dsp.window.move({ out_of_group = true }), "Window Groups: Remove the active window from its group")
 create_bind(vars.kbGroupLockActive, hl.dsp.group.lock_active(), "Window Groups: Lock the active window group")
@@ -141,10 +135,10 @@ for _, dir in ipairs({ "left", "right", "up", "down" }) do
     create_bind("SUPER + SHIFT + " .. dir, hl.dsp.window.move({ direction = dir }), "Window Actions: Move the window to the " .. dir)
 end
 
-create_bind(vars.kbWindowDecreaseWidth, fn.resize_active_window(-10, 0), repeating, "Window Actions: Decrease the active window width")
-create_bind(vars.kbWindowIncreaseWidth, fn.resize_active_window(10, 0), repeating, "Window Actions: Increase the active window width")
-create_bind(vars.kbWindowDecreaseHeight, fn.resize_active_window(0, -10), repeating, "Window Actions: Decrease the active window height")
-create_bind(vars.kbWindowIncreaseHeight, fn.resize_active_window(0, 10), repeating, "Window Actions: Increase the active window height")
+create_bind(vars.kbWindowDecreaseWidth, fn.resize_active_window(-10, 0), "Window Actions: Decrease the active window width", repeating)
+create_bind(vars.kbWindowIncreaseWidth, fn.resize_active_window(10, 0), "Window Actions: Increase the active window width", repeating)
+create_bind(vars.kbWindowDecreaseHeight, fn.resize_active_window(0, -10), "Window Actions: Decrease the active window height", repeating)
+create_bind(vars.kbWindowIncreaseHeight, fn.resize_active_window(0, 10), "Window Actions: Increase the active window height", repeating)
 
 create_bind({ vars.kbMoveWindow, "SUPER + mouse:272" }, hl.dsp.window.drag(), "Window Actions: Move the window by dragging", mouse)
 create_bind({ vars.kbResizeWindow, "SUPER + mouse:273" }, hl.dsp.window.resize(), "Window Actions: Resize the window by dragging", mouse)
@@ -199,8 +193,8 @@ create_bind(vars.kbRecordRegion, hl.dsp.exec_cmd("caelestia record -r"), "Utilit
 create_bind(vars.kbColorPicker, hl.dsp.exec_cmd("hyprpicker -a"), "Utilities: Pick a color from the screen")
 
 -- Brightness
-create_bind("XF86MonBrightnessUp", hl.dsp.global("caelestia:brightnessUp"), locked, "Brightness: Increase screen brightness")
-create_bind("XF86MonBrightnessDown", hl.dsp.global("caelestia:brightnessDown"), locked, "Brightness: Decrease screen brightness")
+create_bind("XF86MonBrightnessUp", hl.dsp.global("caelestia:brightnessUp"), "Brightness: Increase screen brightness", locked)
+create_bind("XF86MonBrightnessDown", hl.dsp.global("caelestia:brightnessDown"), "Brightness: Decrease screen brightness", locked)
 
 -- Media
 create_bind({ vars.kbMediaToggle, "XF86AudioPlay", "XF86AudioPause" }, hl.dsp.global("caelestia:mediaToggle"), "Media: Toggle playback", locked)
@@ -209,24 +203,24 @@ create_bind({ vars.kbMediaPrev, "XF86AudioPrev" }, hl.dsp.global("caelestia:medi
 create_bind({ vars.kbMediaStop, "XF86AudioStop" }, hl.dsp.global("caelestia:mediaStop"), "Media: Stop playback", locked)
 
 -- Volume
-create_bind({ vars.kbVolumeMute, "XF86AudioMute" }, hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), locked, "Volume: Toggle system audio mute")
-create_bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), locked, "Volume: Toggle microphone mute")
+create_bind({ vars.kbVolumeMute, "XF86AudioMute" }, hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), "Volume: Toggle system audio mute", locked)
+create_bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), "Volume: Toggle microphone mute", locked)
 create_bind(
     "XF86AudioRaiseVolume",
     hl.dsp.exec_cmd(
         "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l " ..
         (vars.volumeMax / 100) .. " @DEFAULT_AUDIO_SINK@ " .. vars.volumeStep .. "%+"
     ),
-    locked_repeating,
-    "Volume: Increase system volume"
+    "Volume: Increase system volume",
+    locked_repeating
 )
 create_bind(
     "XF86AudioLowerVolume",
     hl.dsp.exec_cmd(
         "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ " .. vars.volumeStep .. "%-"
     ),
-    locked_repeating,
-    "Volume: Decrease system volume"
+    "Volume: Decrease system volume",
+    locked_repeating
 )
 
 -- Sleep
@@ -239,8 +233,8 @@ create_bind(vars.kbEmoji, hl.dsp.exec_cmd("pkill fuzzel || caelestia emoji -p"),
 create_bind(
     vars.kbClipboardPasteLatest,
     hl.dsp.exec_cmd('sleep 0.5s && ydotool type -d 1 "$(cliphist list | head -1 | cliphist decode)"'),
-    locked,
-    "Clipboard: Paste the latest clipboard item"
+    "Clipboard: Paste the latest clipboard item",
+    locked
 )
 
 -- Testing
