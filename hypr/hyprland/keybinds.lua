@@ -90,7 +90,7 @@ create_bind(vars.kbRestoreLock, function()
     hl.dispatch(hl.dsp.exec_cmd("caelestia shell -d"))
     hl.dispatch(hl.dsp.global("caelestia:lock"))
 end,
-    "Misc: Restore the shell and lock"
+    "Shell: Restore the shell and lock the screen"
 )
 
 -- Kill/restart
