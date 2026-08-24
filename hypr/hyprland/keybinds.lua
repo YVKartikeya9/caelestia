@@ -75,7 +75,7 @@ create_bind(
     function(key)
         return normalise_keybind(key) == launcher_default and release or nil
     end,
-    "Launcher: Open the application launcher"
+    "Shell: Open the launcher"
 )
 
 -- Misc
