@@ -146,8 +146,8 @@ create_bind(vars.kbWindowIncreaseWidth, fn.resize_active_window(10, 0), repeatin
 create_bind(vars.kbWindowDecreaseHeight, fn.resize_active_window(0, -10), repeating, "Window Actions: Decrease the active window height")
 create_bind(vars.kbWindowIncreaseHeight, fn.resize_active_window(0, 10), repeating, "Window Actions: Increase the active window height")
 
-create_bind({ vars.kbMoveWindow, "SUPER + mouse:272" }, hl.dsp.window.drag(), mouse, "Window Actions: Drag the active window")
-create_bind({ vars.kbResizeWindow, "SUPER + mouse:273" }, hl.dsp.window.resize(), mouse, "Window Actions: Resize the active window")
+create_bind({ vars.kbMoveWindow, "SUPER + mouse:272" }, hl.dsp.window.drag(), "Window Actions: Move the window by dragging", mouse)
+create_bind({ vars.kbResizeWindow, "SUPER + mouse:273" }, hl.dsp.window.resize(), "Window Actions: Resize the window by dragging", mouse)
 create_bind(vars.kbCenterWindow, hl.dsp.window.center(), "Window Actions: Center the active window")
 create_bind(vars.kbNormalizeWindow, function()
     hl.dispatch(hl.dsp.window.resize(fn.resize_by_screen(55, 70)))
