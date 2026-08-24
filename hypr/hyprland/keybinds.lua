@@ -105,29 +105,29 @@ for i = 1, 10 do
 end
 
 -- Go to workspace -1/+1
-create_bind(vars.kbPrevWs, hl.dsp.focus({ workspace = "-1" }), "Workspace: Go to the previous workspace", repeating_unless_mouse)
-create_bind(vars.kbNextWs, hl.dsp.focus({ workspace = "+1" }), "Workspace: Go to the next workspace", repeating_unless_mouse)
+create_bind(vars.kbPrevWs, hl.dsp.focus({ workspace = "-1" }), "Workspaces: Go to the previous workspace", repeating_unless_mouse)
+create_bind(vars.kbNextWs, hl.dsp.focus({ workspace = "+1" }), "Workspaces: Go to the next workspace", repeating_unless_mouse)
 
 -- Go to workspace group -1/+1
-create_bind(vars.kbPrevWsGroup, hl.dsp.focus({ workspace = "-10" }), "Workspace: Go to the previous workspace group", repeating_unless_mouse)
-create_bind(vars.kbNextWsGroup, hl.dsp.focus({ workspace = "+10" }), "Workspace: Go to the next workspace group", repeating_unless_mouse)
+create_bind(vars.kbPrevWsGroup, hl.dsp.focus({ workspace = "-10" }), "Workspaces: Go to the previous workspace group", repeating_unless_mouse)
+create_bind(vars.kbNextWsGroup, hl.dsp.focus({ workspace = "+10" }), "Workspaces: Go to the next workspace group", repeating_unless_mouse)
 
 -- Move window to workspace -1/+1
-create_bind(vars.kbMoveWinToWsNext, hl.dsp.window.move({ workspace = "+1" }), "Workspace: Move the active window to the next workspace", repeating_unless_mouse)
-create_bind(vars.kbMoveWinToWsPrev, hl.dsp.window.move({ workspace = "-1" }), "Workspace: Move the active window to the previous workspace", repeating_unless_mouse)
+create_bind(vars.kbMoveWinToWsNext, hl.dsp.window.move({ workspace = "+1" }), "Workspaces: Move the window to the next workspace", repeating_unless_mouse)
+create_bind(vars.kbMoveWinToWsPrev, hl.dsp.window.move({ workspace = "-1" }), "Workspaces: Move the window to the previous workspace", repeating_unless_mouse)
 
 -- Move window to/from special workspace
-create_bind(vars.kbMoveWinToWsSpecial, hl.dsp.window.move({ workspace = "special:special" }), "Workspace: Move the active window to the special workspace")
-create_bind(vars.kbMoveWinFromWsSpecial, hl.dsp.window.move({ workspace = "e+0" }), "Workspace: Move the active window out of the special workspace")
+create_bind(vars.kbMoveWinToWsSpecial, hl.dsp.window.move({ workspace = "special:special" }), "Workspaces: Move the window to the special workspace")
+create_bind(vars.kbMoveWinFromWsSpecial, hl.dsp.window.move({ workspace = "e+0" }), "Workspaces: Move the window out of the special workspace")
 
 -- Window groups
 create_bind(vars.kbWindowCycleNext, hl.dsp.window.cycle_next(), "Window Groups: Cycle to the next window", repeating)
 create_bind(vars.kbWindowCyclePrev, hl.dsp.window.cycle_next({ next = false }), "Window Groups: Cycle to the previous window", repeating)
 create_bind(vars.kbWindowGroupCycleNext, hl.dsp.group.next(), "Window Groups: Cycle to the next window group", repeating)
 create_bind(vars.kbWindowGroupCyclePrev, hl.dsp.group.prev(), "Window Groups: Cycle to the previous window group", repeating)
-create_bind(vars.kbToggleGroup, hl.dsp.group.toggle(), "Window Groups: Toggle the active window group")
-create_bind(vars.kbUngroup, hl.dsp.window.move({ out_of_group = true }), "Window Groups: Remove the active window from its group")
-create_bind(vars.kbGroupLockActive, hl.dsp.group.lock_active(), "Window Groups: Lock the active window group")
+create_bind(vars.kbToggleGroup, hl.dsp.group.toggle(), "Window Groups: Toggle the window group")
+create_bind(vars.kbUngroup, hl.dsp.window.move({ out_of_group = true }), "Window Groups: Remove the window from its group")
+create_bind(vars.kbGroupLockActive, hl.dsp.group.lock_active(), "Window Groups: Lock the window group")
 
 -- Window actions
 for _, dir in ipairs({ "left", "right", "up", "down" }) do
@@ -135,19 +135,19 @@ for _, dir in ipairs({ "left", "right", "up", "down" }) do
     create_bind("SUPER + SHIFT + " .. dir, hl.dsp.window.move({ direction = dir }), "Window Actions: Move the window to the " .. dir)
 end
 
-create_bind(vars.kbWindowDecreaseWidth, fn.resize_active_window(-10, 0), "Window Actions: Decrease the active window width", repeating)
-create_bind(vars.kbWindowIncreaseWidth, fn.resize_active_window(10, 0), "Window Actions: Increase the active window width", repeating)
-create_bind(vars.kbWindowDecreaseHeight, fn.resize_active_window(0, -10), "Window Actions: Decrease the active window height", repeating)
-create_bind(vars.kbWindowIncreaseHeight, fn.resize_active_window(0, 10), "Window Actions: Increase the active window height", repeating)
+create_bind(vars.kbWindowDecreaseWidth, fn.resize_active_window(-10, 0), "Window Actions: Decrease the window width", repeating)
+create_bind(vars.kbWindowIncreaseWidth, fn.resize_active_window(10, 0), "Window Actions: Increase the window width", repeating)
+create_bind(vars.kbWindowDecreaseHeight, fn.resize_active_window(0, -10), "Window Actions: Decrease the window height", repeating)
+create_bind(vars.kbWindowIncreaseHeight, fn.resize_active_window(0, 10), "Window Actions: Increase the window height", repeating)
 
 create_bind({ vars.kbMoveWindow, "SUPER + mouse:272" }, hl.dsp.window.drag(), "Window Actions: Move the window by dragging", mouse)
 create_bind({ vars.kbResizeWindow, "SUPER + mouse:273" }, hl.dsp.window.resize(), "Window Actions: Resize the window by dragging", mouse)
-create_bind(vars.kbCenterWindow, hl.dsp.window.center(), "Window Actions: Center the active window")
+create_bind(vars.kbCenterWindow, hl.dsp.window.center(), "Window Actions: Center the window")
 create_bind(vars.kbNormalizeWindow, function()
     hl.dispatch(hl.dsp.window.resize(fn.resize_by_screen(55, 70)))
     hl.dispatch(hl.dsp.window.center())
 end,
-    "Window Actions: Resize and center the active window"
+    "Window Actions: Resize and center the window"
 )
 create_bind(vars.kbWindowPip, function()
     local a = hl.get_active_window()
@@ -163,11 +163,11 @@ create_bind(vars.kbWindowPip, function()
 end,
     "Window Actions: Toggle picture-in-picture mode"
 )
-create_bind(vars.kbPinWindow, hl.dsp.window.pin(), "Window Actions: Pin the active window")
+create_bind(vars.kbPinWindow, hl.dsp.window.pin(), "Window Actions: Pin the window")
 create_bind(vars.kbWindowFullscreen, hl.dsp.window.fullscreen({ mode = "fullscreen" }), "Window Actions: Toggle fullscreen mode")
 create_bind(vars.kbWindowBorderedFullscreen, hl.dsp.window.fullscreen({ mode = "maximized" }), "Window Actions: Toggle bordered fullscreen mode")
 create_bind(vars.kbToggleWindowFloating, hl.dsp.window.float(), "Window Actions: Toggle floating mode")
-create_bind(vars.kbCloseWindow, hl.dsp.window.close(), "Window Actions: Close the active window")
+create_bind(vars.kbCloseWindow, hl.dsp.window.close(), "Window Actions: Close the window")
 
 -- Special workspace toggles
 create_bind(vars.kbSpecialWs, fn.toggle("specialws"), "Special Workspaces: Toggle the special workspace")
