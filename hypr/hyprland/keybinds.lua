@@ -83,7 +83,7 @@ create_bind(vars.kbSession, hl.dsp.global("caelestia:session"), "Shell: Open the
 create_bind(vars.kbShowSidebar, hl.dsp.global("caelestia:sidebar"), "Shell: Show the sidebar")
 create_bind(vars.kbClearNotifs, hl.dsp.global("caelestia:clearNotifs"), "Shell: Clear all notifications", locked)
 create_bind(vars.kbShowPanels, hl.dsp.global("caelestia:showall"), "Shell: Show all panels")
-create_bind(vars.kbLock, hl.dsp.global("caelestia:lock"), "Misc: Lock the session")
+create_bind(vars.kbLock, hl.dsp.global("caelestia:lock"), "Shell: Lock the screen")
 
 -- Restore lock
 create_bind(vars.kbRestoreLock, function()
